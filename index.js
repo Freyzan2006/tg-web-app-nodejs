@@ -9,7 +9,13 @@ const webAppUrl = "https://polite-valkyrie-d7b825.netlify.app/";
 const bot = new TelegramBot(process.env.TOKEN, { polling: false });
 const app = express();
 
+const webhookUrl = "https://tg-web-app-nodejs.onrender.com"
 
+bot.setWebHook(webhookUrl).then(() => {
+    console.log(`Webhook has been set to ${webhookUrl}`);
+}).catch((error) => {
+    console.error('Error setting webhook:', error);
+});
 
 
 app.use(express.json());
@@ -87,3 +93,6 @@ app.get("/web-data", async (req, res) => {
 })
 
 app.listen(process.env.PORT, () => console.log("server started on PORT " + process.env.PORT));
+
+
+bot.startPolling();
