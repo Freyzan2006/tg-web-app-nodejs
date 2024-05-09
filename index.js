@@ -83,7 +83,7 @@ app.post('/web-data', async (req, res) => {
 })
 
 app.get("/web-data", async (req, res) => {
-    return "hello world !";
+    return "hello world ! 222";
 })
 
 app.listen(process.env.PORT, () => console.log("server started on PORT " + process.env.PORT));
