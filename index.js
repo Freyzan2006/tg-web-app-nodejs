@@ -69,7 +69,7 @@ bot.on("message", async (message) => {
 })
 
 app.get("/", async (req, res) => {
-    return "Hello world !";
+    return res.body;
 })
 
 app.post('/web-data', async (req, res) => {
