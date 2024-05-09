@@ -62,7 +62,7 @@ bot.on("message", async (message) => {
 
 app.post('/web-data', async (req, res) => {
     const { queryId, products = [], totalPrice } = req.body;
-    console.log("yes")
+    
     try {
         await bot.answerWebAppQuery(queryId, {
             type: "article",
@@ -80,6 +80,10 @@ app.post('/web-data', async (req, res) => {
     } catch (err) {
         return res.status(500).json({})
     }
+})
+
+app.get("/web-data", async (req, res) => {
+    return "hello world !";
 })
 
 app.listen(process.env.PORT, () => console.log("server started on PORT " + process.env.PORT));
