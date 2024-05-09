@@ -8,7 +8,10 @@ dotenv.config();
 const webAppUrl = "https://polite-valkyrie-d7b825.netlify.app/";
 const bot = new TelegramBot(process.env.TOKEN, { polling: true });
 const app = express();
+const morgan = require('morgan');
 
+
+app.use(morgan('combined'));
 app.use(express.json());
 app.use(cors());
 
