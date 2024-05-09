@@ -11,7 +11,7 @@ const webAppUrl = "https://polite-valkyrie-d7b825.netlify.app/";
 const bot = new TelegramBot(port, { polling: false });
 const app = express();
 
-const webhookUrl = "https://tg-web-app-nodejs.onrender.com"
+const webhookUrl = "https://tg-web-app-nodejs.onrender.com/web-data"
 
 bot.setWebHook(webhookUrl).then(() => {
     console.log(`Webhook has been set to ${webhookUrl}`);
