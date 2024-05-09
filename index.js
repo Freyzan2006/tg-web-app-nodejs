@@ -6,7 +6,7 @@ const cors = require("cors");
 
 dotenv.config();
 const webAppUrl = "https://polite-valkyrie-d7b825.netlify.app/";
-const bot = new TelegramBot(process.env.TOKEN, { polling: true });
+const bot = new TelegramBot(process.env.TOKEN, { polling: false });
 const app = express();
 
 const webhookUrl = "https://tg-web-app-nodejs.onrender.com"
