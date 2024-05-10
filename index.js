@@ -1,23 +1,28 @@
 const TelegramBot = require("node-telegram-bot-api");
-const dotenv = require('dotenv');
+
 
 const express = require("express");
 const cors = require("cors");
 
-const port = process.env.PORT || 4000;
+const dotenv = require('dotenv');
 
 dotenv.config();
+
+const port = process.env.PORT;
+const botToken = process.env.TOKEN;
+
+
+
+
+
+
+
+
 const webAppUrl = "https://polite-valkyrie-d7b825.netlify.app/";
-const bot = new TelegramBot(port, { polling: false });
+const bot = new TelegramBot(botToken, { polling: true });
 const app = express();
 
-const webhookUrl = "https://tg-web-app-nodejs.onrender.com/web-data"
 
-bot.setWebHook(webhookUrl).then(() => {
-    console.log(`Webhook has been set to ${webhookUrl}`);
-}).catch((error) => {
-    console.error('Error setting webhook:', error);
-});
 
 
 app.use(express.json());
@@ -68,9 +73,7 @@ bot.on("message", async (message) => {
     
 })
 
-app.get("/", async (req, res) => {
-    return res.body;
-})
+
 
 app.post('/web-data', async (req, res) => {
     const { queryId, products = [], totalPrice } = req.body;
@@ -99,4 +102,3 @@ app.post('/web-data', async (req, res) => {
 app.listen(process.env.PORT, () => console.log("server started on PORT " + process.env.PORT));
 
 
-// bot.startPolling();
